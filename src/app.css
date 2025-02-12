@@ -1,0 +1,126 @@
+/* app.css */
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Inter", "system-ui", "sans-serif";
+    --font-heading: "Montserrat", "system-ui", "sans-serif";
+
+    --color-primary: #F18805;
+    --color-secondary: #F0A202;
+    --color-background: #FFF5EE;
+    --color-text: #282828;
+    --color-background2: #FFF5EE;
+    --color-background: #fefefe;
+    
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+}
+
+@layer base {
+
+  h1,
+  .h1 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    /* text-4xl equivalent */
+    line-height: 1;
+
+    @media (min-width: 768px) {
+      font-size: 3.75rem;
+      /* md:text-5xl */
+    }
+  }
+}
+
+@layer components {
+  /* Prose Customization */
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose h1 {
+    @apply font-heading text-4xl font-bold leading-tight text-[var(--text-color)] md:text-5xl;
+  }
+
+  .prose h2 {
+    @apply font-heading text-3xl font-bold leading-tight text-[var(--text-color)] md:text-4xl;
+  }
+
+  .prose h3 {
+    @apply font-heading text-2xl font-bold leading-tight text-[var(--text-color)] md:text-3xl;
+  }
+
+  .prose p {
+    @apply text-lg leading-relaxed text-[var(--text-color)]/80;
+  }
+
+  .prose a {
+    @apply text-[var(--primary-color)] no-underline hover:text-[var(--secondary-color)] transition-colors;
+  }
+
+  .prose strong {
+    @apply text-[var(--text-color)] font-bold;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-[var(--primary-color)] bg-white p-8 text-lg italic text-[var(--text-color)]/80 shadow-sm not-italic;
+  }
+
+  .prose ul {
+    @apply list-none pl-0;
+  }
+
+  .prose li {
+    @apply mb-2 text-lg text-[var(--text-color)]/80;
+  }
+
+  /* Common Components */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-[var(--primary-color)] text-white hover:bg-[var(--secondary-color)];
+  }
+
+  .btn-secondary {
+    @apply border border-[var(--text-color)]/10 bg-white text-[var(--text-color)] hover:bg-[var(--background-color)];
+  }
+
+  /* Layout Utilities */
+  .container-wide {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply mx-auto max-w-4xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection Color */
+::selection {
+  @apply bg-[var(--primary-color)] text-white;
+}
+
+/* Focus Outline */
+:focus {
+  @apply outline-none ring-2 ring-[var(--primary-color)] ring-offset-2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[var(--background-color)];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-[var(--primary-color)] hover:bg-[var(--secondary-color)];
+}
