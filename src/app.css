@@ -11,7 +11,7 @@
     --color-text: #282828;
     --color-background2: #FFF5EE;
     --color-background: #fefefe;
-    
+
     --breakpoint-md: 768px;
     --breakpoint-lg: 1024px;
 }
@@ -33,6 +33,7 @@
 }
 
 @layer components {
+
   /* Prose Customization */
   .prose {
     @apply max-w-none;

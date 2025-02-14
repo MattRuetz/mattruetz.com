@@ -8,7 +8,7 @@ interface WordPressPost {
 	};
 	slug: string;
 	date: string;
-	acf: Record<string, any>;
+	acf: Record<string, unknown>;
 }
 
 export interface PageData {
@@ -20,7 +20,7 @@ export interface PageData {
 		image: string | null;
 		slug: string;
 		date: string;
-		acf: Record<string, any>;
+		acf: Record<string, unknown>;
 	}>;
 	pagination: {
 		currentPage: number;
@@ -37,22 +37,57 @@ export const load = async ({ fetch, url }) => {
 	const per_page = 9;
 
 	// Fetch home page data with GraphQL
-	const homeResponse = await fetch('https://mattruetz.com/wp-json/graphql', {
+	const homeResponse = await fetch('https://mattruetz.com/graphql', {
 		method: 'POST',
-		headers: { 'Content-Type': 'application/json' },
+		headers: {
+			'Content-Type': 'application/json',
+			Accept: 'application/json'
+		},
 		body: JSON.stringify({
 			query: `
 				query HomePageData {
 					page(id: "home", idType: URI) {
 						title
 						content
-						acf {
+						homeFields {
 							profileImage {
-								sourceUrl
-								altText
-								mediaDetails {
-									height
-									width
+								node {
+									sourceUrl(size: LARGE)
+									altText
+									mediaDetails {
+										height
+										width
+									}
+								}
+							}
+							techLogo1 {
+								node {
+									sourceUrl(size: MEDIUM)
+									altText
+									mediaDetails {
+										height
+										width
+									}
+								}
+							}
+							techLogo2 {
+								node {
+									sourceUrl(size: MEDIUM)
+									altText
+									mediaDetails {
+										height
+										width
+									}
+								}
+							}
+							techLogo3 {
+								node {
+									sourceUrl(size: MEDIUM)
+									altText
+									mediaDetails {
+										height
+										width
+									}
 								}
 							}
 						}
@@ -63,7 +98,7 @@ export const load = async ({ fetch, url }) => {
 	});
 
 	const homeData = await homeResponse.json();
-	console.log('GraphQL Response:', JSON.stringify(homeData, null, 2));
+	// console.log('GraphQL Response:', JSON.stringify(homeData, null, 2));
 
 	// Fetch posts with total count in headers
 	const projectsResponse = await fetch(
@@ -112,7 +147,7 @@ export const load = async ({ fetch, url }) => {
 
 			for (const field of imageFields) {
 				if (processedAcf[field]) {
-					const imageUrl = await getImageUrl(processedAcf[field]);
+					const imageUrl = await getImageUrl(processedAcf[field] as string | number);
 					processedAcf[field] = imageUrl;
 				}
 			}
@@ -134,11 +169,14 @@ export const load = async ({ fetch, url }) => {
 		page: {
 			...homeData.data?.page,
 			homeFields: {
-				profileImage: homeData.data?.page?.acf?.profileImage || {
+				profileImage: homeData.data?.page?.homeFields?.profileImage?.node || {
 					sourceUrl: '/images/default-profile.jpg',
 					altText: 'Profile Image',
 					mediaDetails: { width: 800, height: 800 }
-				}
+				},
+				techLogo1: homeData.data?.page?.homeFields?.techLogo1?.node || null,
+				techLogo2: homeData.data?.page?.homeFields?.techLogo2?.node || null,
+				techLogo3: homeData.data?.page?.homeFields?.techLogo3?.node || null
 			}
 		},
 		projects: processedProjects,

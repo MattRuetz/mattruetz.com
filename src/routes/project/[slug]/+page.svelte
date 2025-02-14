@@ -456,7 +456,7 @@
 		content: '';
 		position: absolute;
 		inset: 2rem -2rem -2rem;
-		background: radial-gradient(circle at center, rgba(var(--color-primary-rgb), 0.1), transparent);
+		background: radial-gradient(circle at center, rgba(var(--color-primary), 0.1), transparent);
 		z-index: -1;
 		filter: blur(2rem);
 	}
@@ -469,11 +469,7 @@
 		content: '';
 		position: absolute;
 		inset: -2rem;
-		background: radial-gradient(
-			circle at center,
-			rgba(var(--color-primary-rgb), 0.05),
-			transparent
-		);
+		background: radial-gradient(circle at center, rgba(var(--color-primary), 0.05), transparent);
 		z-index: -1;
 		filter: blur(2rem);
 		opacity: 0;
@@ -498,7 +494,7 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(45deg, rgba(var(--color-primary-rgb), 0.05), transparent);
+		background: linear-gradient(45deg, rgba(var(--color-primary), 0.05), transparent);
 		z-index: 0;
 	}
 
