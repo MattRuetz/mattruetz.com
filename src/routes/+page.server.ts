@@ -32,9 +32,38 @@ export interface PageData {
 	};
 }
 
-export const load = async ({ fetch, url }): Promise<PageData> => {
+export const load = async ({ fetch, url }) => {
 	const page = Number(url.searchParams.get('page')) || 1;
 	const per_page = 9;
+
+	// Fetch home page data with GraphQL
+	const homeResponse = await fetch('https://mattruetz.com/wp-json/graphql', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({
+			query: `
+				query HomePageData {
+					page(id: "home", idType: URI) {
+						title
+						content
+						acf {
+							profileImage {
+								sourceUrl
+								altText
+								mediaDetails {
+									height
+									width
+								}
+							}
+						}
+					}
+				}
+			`
+		})
+	});
+
+	const homeData = await homeResponse.json();
+	console.log('GraphQL Response:', JSON.stringify(homeData, null, 2));
 
 	// Fetch posts with total count in headers
 	const projectsResponse = await fetch(
@@ -102,6 +131,16 @@ export const load = async ({ fetch, url }): Promise<PageData> => {
 	);
 
 	return {
+		page: {
+			...homeData.data?.page,
+			homeFields: {
+				profileImage: homeData.data?.page?.acf?.profileImage || {
+					sourceUrl: '/images/default-profile.jpg',
+					altText: 'Profile Image',
+					mediaDetails: { width: 800, height: 800 }
+				}
+			}
+		},
 		projects: processedProjects,
 		pagination: {
 			currentPage: page,
