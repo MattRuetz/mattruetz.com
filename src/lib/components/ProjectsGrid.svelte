@@ -10,7 +10,7 @@
 		onPageChange: (page: number) => void;
 	}
 
-	let { projects, pagination, isLoading, onPageChange } = $props<Props>();
+	let { projects, pagination, isLoading, onPageChange } = $props();
 
 	// Derived pagination values
 	const hasNextPage = $derived(pagination.currentPage < pagination.totalPages);
@@ -35,7 +35,7 @@
 				</div>
 			{/if}
 			{#each projects as project, i (project.id)}
-				<ProjectCard {project} {i} />
+				<ProjectCard {project} index={i} />
 			{/each}
 		</div>
 	{/if}
