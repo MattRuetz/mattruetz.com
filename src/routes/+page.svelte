@@ -85,6 +85,6 @@
 
 <EcommerceSection {techLogo1} {techLogo2} {techLogo3} />
 
-<ProjectsSection {projects} {pagination} {isLoading} {handlePageChange} />
+<!-- <ProjectsSection {projects} {pagination} {isLoading} {handlePageChange} /> -->
 
 <CallToActionSection />

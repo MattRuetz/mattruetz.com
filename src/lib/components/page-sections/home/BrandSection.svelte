@@ -35,7 +35,7 @@
 	});
 </script>
 
-<section class="brand-section flex min-h-[80dvh] items-center bg-white px-4 pt-16 pb-32">
+<section class="brand-section bg-background2 flex min-h-[80dvh] items-center px-4 pt-16 pb-32">
 	<div class="container mx-auto">
 		<div class="flex flex-col gap-8 lg:flex-row-reverse lg:items-center">
 			<div class="lg:w-1/2">
