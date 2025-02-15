@@ -24,7 +24,7 @@
 </script>
 
 <section
-	class="hero-section bg-background2 relative flex min-h-[90vh] items-center justify-center px-4 py-16"
+	class="hero-section bg-background2 relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 py-16"
 	aria-label="Hero Section"
 	onmousemove={handleMouseMove}
 	onmouseleave={handleMouseLeave}
@@ -33,14 +33,14 @@
 		class="logo-icon absolute -top-[20%]
 		-right-[20%] hidden w-[140%]
 		opacity-30
-		md:-top-[10%] md:-right-[40%] md:block md:w-[80%]
-		lg:-top-[20%] lg:-right-[25%] lg:block lg:w-[70%]"
+		 md:-top-[10%] md:-right-[40%] md:block
+		md:w-[80%] lg:-top-[10%] lg:-right-[25%] lg:block lg:w-[70%]"
 		style:transform={transformStyle}
 		style:transition="transform 0.2s ease-out"
 	>
 		<img src="/images/branding/Logo Icon Final-cropped.svg" alt="Logo" class="h-auto w-full" />
 	</div>
-	<div class="relative z-10 w-full text-center md:ml-[10%] md:text-left">
+	<div class="relative z-10 w-full text-center md:ml-[5%] md:text-left">
 		<h1
 			class="mb-6 text-5xl leading-14 font-extrabold tracking-tight text-gray-900 md:text-7xl md:leading-20 lg:text-[7rem] lg:leading-28"
 		>

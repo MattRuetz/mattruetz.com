@@ -72,6 +72,20 @@ export function animateSkills() {
 /**
  * Animate the service cards section.
  */
+
+export function animateWSMAheading() {
+	gsap.from('.what-sets-me-apart h2', {
+		x: -50,
+		opacity: 0,
+		duration: 0.8,
+		ease: 'power3.out',
+		scrollTrigger: {
+			trigger: '.what-sets-me-apart h2',
+			start: 'top bottom-=100',
+			toggleActions: 'play none none reverse'
+		}
+	});
+}
 export function animateServices() {
 	gsap.from('.service-cards > *', {
 		y: 50,
@@ -98,15 +112,25 @@ export function animateBrand() {
 				toggleActions: 'play none none reverse'
 			}
 		})
-		.from('.brand-content', {
+		.from('.brand-section h2', {
 			x: -50,
 			opacity: 0,
 			duration: 0.8
 		})
 		.from(
-			'.brand-image',
+			'.brand-section ul li',
 			{
-				x: 50,
+				x: -30,
+				opacity: 0,
+				duration: 0.5,
+				stagger: 0.2
+			},
+			'-=0.4'
+		)
+		.from(
+			'.devices-showcase',
+			{
+				y: 50,
 				opacity: 0,
 				duration: 0.8
 			},
@@ -163,12 +187,35 @@ export function animateParallax() {
 }
 
 /**
+ * Animate the introduction section content.
+ */
+export function animateIntroduction() {
+	gsap
+		.timeline({
+			scrollTrigger: {
+				trigger: '.introduction-content',
+				start: 'top center',
+				toggleActions: 'play none none reverse'
+			}
+		})
+		.from('.introduction-heading', { scale: 0.9, opacity: 0, duration: 0.6, ease: 'back.out(1.7)' })
+		.from('.introduction-text', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+		.from(
+			'.skill-items > *',
+			{ scale: 0.95, opacity: 0, duration: 0.5, stagger: 0.2, delay: 0.2, ease: 'power3.out' },
+			'-=0.1'
+		);
+}
+
+/**
  * Apply all animations in sequence.
  */
 export function animatePage() {
 	animateHero();
+	animateIntroduction();
 	animateProfileImage();
 	animateSkills();
+	animateWSMAheading();
 	animateServices();
 	animateBrand();
 	animateEcommerce();

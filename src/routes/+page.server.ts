@@ -90,6 +90,16 @@ export const load = async ({ fetch, url }) => {
 									}
 								}
 							}
+							desktopScrollthru {
+								node {
+									sourceUrl
+								}
+							}
+							mobileScrollthru {
+								node {
+									sourceUrl
+								}
+							}
 						}
 					}
 				}
@@ -176,7 +186,9 @@ export const load = async ({ fetch, url }) => {
 				},
 				techLogo1: homeData.data?.page?.homeFields?.techLogo1?.node || null,
 				techLogo2: homeData.data?.page?.homeFields?.techLogo2?.node || null,
-				techLogo3: homeData.data?.page?.homeFields?.techLogo3?.node || null
+				techLogo3: homeData.data?.page?.homeFields?.techLogo3?.node || null,
+				desktopScrollthru: homeData.data?.page?.homeFields?.desktopScrollthru?.node || null,
+				mobileScrollthru: homeData.data?.page?.homeFields?.mobileScrollthru?.node || null
 			}
 		},
 		projects: processedProjects,

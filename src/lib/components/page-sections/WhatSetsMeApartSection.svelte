@@ -1,17 +1,20 @@
 <script lang="ts">
 	import ServiceCard from '$lib/components/ServiceCard.svelte';
-	import { faHeart, faBriefcase, faCogs } from '@fortawesome/free-solid-svg-icons';
+	import { faHeart, faBriefcase, faCogs, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 </script>
 
-<section class="bg-gray-50 px-4 py-16">
-	<div class="container mx-auto">
-		<h2 class="mb-12 text-center text-3xl font-bold">What Sets Me Apart</h2>
-		<div class="service-cards grid gap-8 md:grid-cols-3">
+<section class="what-sets-me-apart bg-background2 px-4 py-16">
+	<div class="mx-auto max-w-7xl">
+		<h2 class="text-text highlight mb-16 text-center text-4xl font-bold md:text-6xl">
+			What Sets Me Apart?
+		</h2>
+		<div class="service-cards grid gap-8 md:grid-cols-3 lg:gap-12">
 			<div>
 				<ServiceCard
 					icon={faHeart}
+					buttonIcon={faArrowRight}
 					title="Attention + Care"
-					description="My clients trust me because I am honest and committed to meaningful service."
+					description="My clients trust me because I am honest, transparent, and committed to meaningful service that delivers results."
 					bulletPoints={[
 						'Satisfaction guarantee',
 						'Free revisions + minor updates',
@@ -25,23 +28,25 @@
 			<div>
 				<ServiceCard
 					icon={faBriefcase}
+					buttonIcon={faArrowRight}
 					title="Hosting + Maintenance"
-					description="I offer affordable and flexible hosting and maintenance plans!"
+					description="Secure, reliable hosting with comprehensive maintenance plans to keep your site running smoothly."
 					bulletPoints={[
 						'Fast hosting',
 						'Daily backups',
 						'Weekly security audits',
 						'Updates and changes'
 					]}
-					ctaText="See Maintenance Packages"
+					ctaText="Maintenance Packages"
 					ctaLink="/hire-me-2"
 				/>
 			</div>
 			<div>
 				<ServiceCard
 					icon={faCogs}
+					buttonIcon={faArrowRight}
 					title="Bells + Whistles"
-					description="With all the features you can imagine!"
+					description="Advanced features and integrations to take your website to the next level."
 					bulletPoints={[
 						'CRM Integration',
 						'Analytics & security',

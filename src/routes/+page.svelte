@@ -57,6 +57,8 @@
 	const techLogo1 = $derived(data?.page?.homeFields?.techLogo1 || null);
 	const techLogo2 = $derived(data?.page?.homeFields?.techLogo2 || null);
 	const techLogo3 = $derived(data?.page?.homeFields?.techLogo3 || null);
+	const desktopScrollthru = $derived(data?.page?.homeFields?.desktopScrollthru || null);
+	const mobileScrollthru = $derived(data?.page?.homeFields?.mobileScrollthru || null);
 	const defaultImage = '/images/default-profile.jpg';
 
 	let imageError = $state(false);
@@ -77,9 +79,9 @@
 <!-- Replaced inline sections with components -->
 <WhatSetsMeApartSection />
 
-<BrandSection />
+<BrandSection {desktopScrollthru} {mobileScrollthru} />
 
-<EcommerceSection {techLogo1} {techLogo2} />
+<EcommerceSection {techLogo1} {techLogo2} {techLogo3} />
 
 <ProjectsSection {projects} {pagination} {isLoading} {handlePageChange} />
 

@@ -1,21 +1,13 @@
 <script lang="ts">
-	export let techLogo1: {
-		sourceUrl: string;
-		altText?: string;
-		mediaDetails?: { width: number; height: number };
-	} | null;
-
-	export let techLogo2: {
-		sourceUrl: string;
-		altText?: string;
-		mediaDetails?: { width: number; height: number };
-	} | null;
+	const { techLogo1, techLogo2, techLogo3 } = $props();
 </script>
 
-<section class="bg-gray-50 px-4 py-16">
+<section class="relative overflow-hidden rounded-2xl px-4 py-16">
 	<div class="container mx-auto">
-		<div class="ecommerce-card rounded-2xl border border-gray-200 bg-white p-8">
-			<h2 class="mb-6 text-center text-3xl font-bold">Experienced E-Commerce Developer</h2>
+		<div class="ecommerce-card bg-background2 rounded-2xl px-24 py-16">
+			<h2 class="mb-12 text-center text-3xl font-bold md:text-4xl">
+				Experienced E-Commerce Developer
+			</h2>
 			<div class="mb-8 flex justify-center gap-8">
 				{#if techLogo1}
 					<img
@@ -33,6 +25,16 @@
 						alt={techLogo2.altText || 'Tech Logo 2'}
 						width={techLogo2.mediaDetails?.width}
 						height={techLogo2.mediaDetails?.height}
+						class="max-h-14 object-contain"
+						loading="lazy"
+					/>
+				{/if}
+				{#if techLogo3}
+					<img
+						src={techLogo3.sourceUrl}
+						alt={techLogo3.altText || 'Tech Logo 3'}
+						width={techLogo3.mediaDetails?.width}
+						height={techLogo3.mediaDetails?.height}
 						class="max-h-14 object-contain"
 						loading="lazy"
 					/>

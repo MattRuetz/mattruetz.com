@@ -19,7 +19,7 @@
 	}
 </script>
 
-<section class="bg-gray-50 py-16">
+<section class="bg-background py-16">
 	<div class="container mx-auto px-4">
 		<div class="grid items-center gap-8 md:grid-cols-2">
 			<div class="profile-image relative">
@@ -40,9 +40,12 @@
 					onload={handleImageLoad}
 				/>
 			</div>
-			<div class="lg:w-2/3">
-				<h2 class="mb-6 text-3xl font-bold">Hi, I'm Matt</h2>
-				<p class="mb-6 text-xl text-gray-700">I am a Full-package web designer and developer</p>
+			<div class="introduction-content lg:w-2/3">
+				<h2 class="introduction-heading text-text mb-6 text-6xl font-bold">Hi, I'm Matt</h2>
+				<p class="introduction-text mb-6 text-2xl text-gray-700">
+					I am a high-impact web designer and developer dedicated to creating digital experiences
+					that captivate and inspire.
+				</p>
 				<div class="grid gap-6 sm:grid-cols-2">
 					<div class="skill-item flex items-center gap-3">
 						<span class="bg-primary/10 text-primary rounded-full p-2">
