@@ -6,9 +6,9 @@
 
 <a
 	{href}
-	class="flex w-fit items-center gap-4 rounded-sm border-2 px-6 py-3 text-center text-sm font-semibold shadow-sm transition-all md:px-6 md:py-3 md:text-lg {isPrimary
-		? 'bg-primary hover:bg-primary/90 border-transparent text-white'
-		: 'border-text text-text hover:bg-primary/5'} {className}"
+	class="z-10 flex w-fit items-center gap-4 rounded-sm border-2 px-6 py-3 text-center text-sm font-semibold shadow-sm transition-all md:px-6 md:py-3 md:text-lg {isPrimary
+		? 'bg-button hover:bg-button/90 border-transparent text-white'
+		: 'border-button text-button hover:bg-button/5'} {className}"
 >
 	{@render children()}
 	{#if icon}

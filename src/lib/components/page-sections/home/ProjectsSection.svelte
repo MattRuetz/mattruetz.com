@@ -8,5 +8,6 @@
 </script>
 
 <section class="bg-white px-4 py-16">
+	<h2 class="mb-12 text-center text-3xl font-bold">My Work</h2>
 	<ProjectsGrid {projects} {pagination} {isLoading} onPageChange={handlePageChange} />
 </section>

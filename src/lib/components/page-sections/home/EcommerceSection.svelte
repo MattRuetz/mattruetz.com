@@ -4,8 +4,10 @@
 
 <section class="relative overflow-hidden rounded-2xl px-4 py-16">
 	<div class="container mx-auto">
-		<div class="ecommerce-card bg-background2 rounded-2xl px-24 py-16">
-			<h2 class="mb-12 text-center text-3xl font-bold md:text-4xl">
+		<div
+			class="ecommerce-card bg-background2 flex flex-col items-center justify-center rounded-2xl px-24 py-16"
+		>
+			<h2 class="highlight mb-12 text-center text-3xl font-bold md:text-4xl">
 				Experienced E-Commerce Developer
 			</h2>
 			<div class="mb-8 flex justify-center gap-8">

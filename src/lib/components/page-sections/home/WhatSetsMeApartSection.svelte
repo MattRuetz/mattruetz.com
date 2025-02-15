@@ -3,9 +3,11 @@
 	import { faHeart, faBriefcase, faCogs, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 </script>
 
-<section class="what-sets-me-apart bg-background2 px-4 py-16">
-	<div class="mx-auto max-w-7xl">
-		<h2 class="text-text highlight mb-16 text-center text-4xl font-bold md:text-6xl">
+<section class="what-sets-me-apart px-4 py-16">
+	<div
+		class="container mx-auto rounded-2xl bg-[linear-gradient(to_bottom,var(--color-background2)30%,var(--color-background))] px-28 py-16"
+	>
+		<h2 class="text-text highlight mb-16 text-left text-4xl font-bold md:text-6xl">
 			What Sets Me Apart?
 		</h2>
 		<div class="service-cards grid gap-8 md:grid-cols-3 lg:gap-12">

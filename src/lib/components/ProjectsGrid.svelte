@@ -22,8 +22,6 @@
 </script>
 
 <div class="container mx-auto">
-	<h2 class="mb-12 text-center text-3xl font-bold">My Work</h2>
-
 	{#if projects}
 		<div class="relative grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#if isLoading}
@@ -51,7 +49,7 @@
 				<button
 					class="rounded-md border border-gray-200 px-4 py-2 transition-colors enabled:cursor-pointer enabled:hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
 					disabled={!hasPreviousPage}
-					on:click={() => onPageChange(pagination.currentPage - 1)}
+					onclick={() => onPageChange(pagination.currentPage - 1)}
 				>
 					Previous
 				</button>
@@ -63,7 +61,7 @@
 							i + 1
 								? '!cursor-default border-gray-900 bg-gray-900 text-white hover:!bg-gray-900'
 								: ''}"
-							on:click={() => onPageChange(i + 1)}
+							onclick={() => onPageChange(i + 1)}
 						>
 							{i + 1}
 						</button>
@@ -75,7 +73,7 @@
 				<button
 					class="rounded-md border border-gray-200 px-4 py-2 transition-colors enabled:cursor-pointer enabled:hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
 					disabled={!hasNextPage}
-					on:click={() => onPageChange(pagination.currentPage + 1)}
+					onclick={() => onPageChange(pagination.currentPage + 1)}
 				>
 					Next
 				</button>

@@ -48,13 +48,6 @@ export default {
 					}
 				}
 			},
-			colors: {
-				primary: 'rgb(var(--color-primary))',
-				secondary: 'rgb(var(--color-secondary))',
-				background: 'rgb(var(--color-background))',
-				background2: 'rgb(var(--color-background2))',
-				text: 'rgb(var(--color-text))'
-			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 				heading: ['Montserrat', 'system-ui', 'sans-serif']

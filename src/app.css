@@ -2,23 +2,25 @@
 @import "tailwindcss";
 
 @theme {
-    --font-sans: "Inter", "system-ui", "sans-serif";
-    --font-heading: "Montserrat", "system-ui", "sans-serif";
+  --font-sans: "Inter", "system-ui", "sans-serif";
+  --font-heading: "Montserrat", "system-ui", "sans-serif";
 
-    --color-primary: #F18805;
-    --color-secondary: #F0A202;
-    --color-text: #282828;
-    --color-background2: #fef8f4;
-    --color-background: #fefefe;
+  /* Bright, vibrant blue */
+  --color-primary: #f18805;
+  --color-secondary: #f0a202;
+  --color-text: #282828;
+  --color-background2: #fef8f4;
+  --color-background: white;
+  --color-button: var(--color-primary);
+  /* Bright, vibrant blue */
 
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 1024px;
-    --tight-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-    --looser-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --tight-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  --looser-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 @layer base {
-
   h1,
   .h1 {
     font-family: var(--font-heading);
@@ -91,7 +93,7 @@
   }
 
   .btn-primary {
-    @apply bg-[var(--primary-color)] text-white hover:bg-[var(--secondary-color)];
+    @apply bg-[var(--color-primary)] text-white hover:bg-[var(--color-secondary)];
   }
 
   .btn-secondary {

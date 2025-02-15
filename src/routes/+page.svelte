@@ -3,13 +3,13 @@
 	import { onNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
-	import HeroSection from '$lib/components/page-sections/HeroSection.svelte';
-	import IntroductionSection from '$lib/components/page-sections/IntroductionSection.svelte';
-	import WhatSetsMeApartSection from '$lib/components/page-sections/WhatSetsMeApartSection.svelte';
-	import BrandSection from '$lib/components/page-sections/BrandSection.svelte';
-	import EcommerceSection from '$lib/components/page-sections/EcommerceSection.svelte';
-	import ProjectsSection from '$lib/components/page-sections/ProjectsSection.svelte';
-	import CallToActionSection from '$lib/components/page-sections/CallToActionSection.svelte';
+	import HeroSection from '$lib/components/page-sections/home/HeroSection.svelte';
+	import IntroductionSection from '$lib/components/page-sections/home/IntroductionSection.svelte';
+	import WhatSetsMeApartSection from '$lib/components/page-sections/home/WhatSetsMeApartSection.svelte';
+	import BrandSection from '$lib/components/page-sections/home/BrandSection.svelte';
+	import EcommerceSection from '$lib/components/page-sections/home/EcommerceSection.svelte';
+	import ProjectsSection from '$lib/components/page-sections/home/ProjectsSection.svelte';
+	import CallToActionSection from '$lib/components/page-sections/home/CallToActionSection.svelte';
 
 	// Properly access the proxy-wrapped props
 	let { data } = $props();
