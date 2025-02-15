@@ -41,7 +41,10 @@
 	"dependencies": {
 		"@fortawesome/free-brands-svg-icons": "^6.7.2",
 		"@fortawesome/free-solid-svg-icons": "^6.7.2",
+		"@slidy/animation": "^1.0.9",
+		"@splidejs/svelte-splide": "^0.2.9",
 		"gsap": "^3.12.7",
+		"slidey": "^1.0.1",
 		"svelte-fa": "^4.0.3",
 		"tailwindcss-animate": "^1.0.7"
 	}

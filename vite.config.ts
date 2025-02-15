@@ -6,5 +6,11 @@ export default defineConfig({
 	plugins: [tailwindcss(), sveltekit()],
 	build: {
 		sourcemap: false // This will prevent source map generation
+	},
+	optimizeDeps: {
+		include: ['gsap', 'gsap/ScrollTrigger']
+	},
+	ssr: {
+		noExternal: ['gsap']
 	}
 });

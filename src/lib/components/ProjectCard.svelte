@@ -2,25 +2,12 @@
 	import { fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
-	export let project: {
-		id: number;
-		title: string;
-		excerpt: string;
-		image: string | null;
-		slug: string;
-		date: string;
-		acf: {
-			client_name?: string;
-			services?: string[];
-			page_scroll_image?: string;
-		};
-	};
-	export let index: number;
+	let { project, index } = $props();
 </script>
 
 <a
 	href="/project/{project.slug}"
-	class="block overflow-hidden rounded-lg border border-gray-200 text-inherit no-underline shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+	class="bg-background block overflow-hidden rounded-lg border border-gray-200 text-inherit no-underline shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
 	in:fly={{ y: 50, duration: 400, delay: index * 100, easing: quintOut }}
 >
 	<div class="relative h-64 w-full">

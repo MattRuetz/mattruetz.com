@@ -10,6 +10,7 @@
 	import EcommerceSection from '$lib/components/page-sections/home/EcommerceSection.svelte';
 	import ProjectsSection from '$lib/components/page-sections/home/ProjectsSection.svelte';
 	import CallToActionSection from '$lib/components/page-sections/home/CallToActionSection.svelte';
+	import FeaturedProjectsSection from '$lib/components/page-sections/home/FeaturedProjectsSection.svelte';
 
 	// Properly access the proxy-wrapped props
 	let { data } = $props();
@@ -78,6 +79,7 @@
 
 <!-- Replaced inline sections with components -->
 <WhatSetsMeApartSection />
+<FeaturedProjectsSection {projects} />
 
 <BrandSection {desktopScrollthru} {mobileScrollthru} />
 

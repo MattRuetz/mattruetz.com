@@ -121,9 +121,9 @@ html {
 }
 
 /* Focus Outline */
-:focus {
+/* :focus {
   @apply outline-none ring-2 ring-[var(--primary-color)] ring-offset-2;
-}
+} */
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

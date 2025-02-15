@@ -1,8 +1,7 @@
 <script lang="ts">
-	import Fa from 'svelte-fa';
-	import { faCode, faPaintBrush, faMobileScreen } from '@fortawesome/free-solid-svg-icons';
-
-	import { faWordpress } from '@fortawesome/free-brands-svg-icons';
+	import { faCode, faPaintBrush, faSearch, faInfo } from '@fortawesome/free-solid-svg-icons';
+	import AnimatedSignature from '$lib/components/AnimatedSignature.svelte';
+	import LittleServiceCard from '$lib/components/LittleServiceCard.svelte';
 
 	const { profileImage } = $props();
 
@@ -17,62 +16,81 @@
 	function handleImageLoad() {
 		imageLoading = false;
 	}
+
+	const services = [
+		{
+			icon: faCode,
+			title: 'Web Design',
+			description: 'I design websites that are visually appealing and easy to navigate.'
+		}
+	];
 </script>
 
-<section class="bg-background py-16">
+<section class="py-20 md:pt-24">
 	<div class="container mx-auto px-4">
-		<div class="grid items-center gap-8 md:grid-cols-2">
-			<div class="profile-image relative">
-				{#if imageLoading}
-					<div class="absolute inset-0 animate-pulse rounded-lg bg-gray-100"></div>
-				{/if}
-
-				<img
-					src={imageError ? defaultImage : profileImage.sourceUrl}
-					alt={profileImage.altText || 'Profile Image'}
-					width={profileImage.mediaDetails?.width}
-					height={profileImage.mediaDetails?.height}
-					class="mx-auto w-full max-w-md rounded-lg shadow-lg transition-opacity duration-300"
-					class:opacity-0={imageLoading}
-					loading="lazy"
-					decoding="async"
-					onerror={handleImageError}
-					onload={handleImageLoad}
-				/>
-			</div>
-			<div class="introduction-content lg:w-2/3">
-				<h2 class="introduction-heading text-text mb-6 text-6xl font-bold">Hi, I'm Matt</h2>
-				<p class="introduction-text mb-6 text-2xl text-gray-700">
-					I am a high-impact web designer and developer dedicated to creating digital experiences
-					that captivate and inspire.
-				</p>
-				<div class="grid gap-6 sm:grid-cols-2">
-					<div class="skill-item flex items-center gap-3">
-						<span class="bg-primary/10 text-primary rounded-full p-2">
-							<Fa icon={faCode} size="lg" />
-						</span>
-						<span>5+ years experience</span>
-					</div>
-					<div class="skill-item flex items-center gap-3">
-						<span class="bg-primary/10 text-primary rounded-full p-2">
-							<Fa icon={faWordpress} size="lg" />
-						</span>
-						<span>WordPress Websites</span>
-					</div>
-					<div class="skill-item flex items-center gap-3">
-						<span class="bg-primary/10 text-primary rounded-full p-2">
-							<Fa icon={faPaintBrush} size="lg" />
-						</span>
-						<span>Brand Identity Design</span>
-					</div>
-					<div class="skill-item flex items-center gap-3">
-						<span class="bg-primary/10 text-primary rounded-full p-2">
-							<Fa icon={faMobileScreen} size="lg" />
-						</span>
-						<span>Web & PWA Apps</span>
-					</div>
+		<!-- Top Section with Image and Introduction -->
+		<div class="mb-4 grid gap-12 md:grid-cols-2 md:gap-16">
+			<!-- Left Column - Image and Name -->
+			<div class="relative">
+				<div class="relative mx-auto max-w-[500px] overflow-visible rounded-3xl">
+					<AnimatedSignature />
+					{#if imageLoading}
+						<div class="absolute inset-0 animate-pulse rounded-lg bg-gray-100"></div>
+					{/if}
+					<img
+						src={imageError ? defaultImage : profileImage.sourceUrl}
+						alt={profileImage.altText || 'Profile Image'}
+						width={profileImage.mediaDetails?.width}
+						height={profileImage.mediaDetails?.height}
+						class="mx-auto -mt-4 w-full rounded-lg shadow-lg transition-opacity duration-300"
+						class:opacity-0={imageLoading}
+						loading="lazy"
+						decoding="async"
+						onerror={handleImageError}
+						onload={handleImageLoad}
+					/>
 				</div>
 			</div>
+
+			<!-- Right Column - Large Text -->
+			<div class="mt-8 flex h-full flex-col items-center justify-center gap-4">
+				<h2 class="font-heading mb-2 text-5xl leading-tight font-bold md:text-7xl">
+					I am a <span class="text-primary">full-package</span> web designer and developer
+				</h2>
+				<hr class="w-full border-t border-gray-300" />
+				<p class="text-text/80 text-xl leading-relaxed md:text-2xl">
+					I build websites from the ground up for businesses and organizations of all shapes and
+					sizes
+				</p>
+				<p class="text-text/80 text-xl leading-relaxed font-bold md:text-2xl">
+					Get a <span class="text-primary">professionally designed website</span> built to satisfy your
+					unique needs and goals!
+				</p>
+			</div>
 		</div>
+
+		<!-- Services Grid -->
+		<!-- <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+			<LittleServiceCard
+				title="Optimized E-Commerce"
+				description="I build e-commerce websites that are optimized for sales and conversions."
+				icon={faCode}
+			/>
+			<LittleServiceCard
+				title="Informational Websites"
+				description="I design informational websites that are visually appealing and easy to navigate."
+				icon={faInfo}
+			/>
+			<LittleServiceCard
+				title="SEO Optimized"
+				description="I optimize websites for search engines to improve visibility and traffic."
+				icon={faSearch}
+			/>
+			<LittleServiceCard
+				title="Brand Identity Design"
+				description="I design brand identities to create a consistent and recognizable image for your business."
+				icon={faPaintBrush}
+			/>
+		</div> -->
 	</div>
 </section>
