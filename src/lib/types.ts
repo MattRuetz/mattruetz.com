@@ -6,7 +6,7 @@ export interface Project {
 	image: string | null;
 	slug: string;
 	date: string;
-	acf: Record<string, any>;
+	acf: Record<string, unknown>;
 }
 
 export interface Pagination {
@@ -16,4 +16,31 @@ export interface Pagination {
 	perPage: number;
 	hasNextPage: boolean;
 	hasPreviousPage: boolean;
+}
+
+export interface Testimonial {
+	authorName: string;
+	authorTitle: string;
+	message: string;
+	rating: number;
+	isFeatured: boolean;
+	focusPart: string;
+	featuredIndex: number;
+	authorPhoto: {
+		node?: {
+			sourceUrl: string;
+			altText: string;
+			mediaDetails?: {
+				height: number;
+				width: number;
+			};
+		};
+	};
+	relatedProject?: {
+		node?: {
+			databaseId: number;
+			slug: string;
+			title: string;
+		};
+	};
 }

@@ -17,7 +17,7 @@
 		{#if activeProject.acf.services?.length}
 			<div class="flex flex-wrap justify-end gap-2">
 				{#each activeProject.acf.services as service}
-					<span class="bg-primary/10 text-primary rounded-full px-3 py-1 text-xs">{service}</span>
+					<span class="bg-background2 text-primary rounded-full px-3 py-1 text-xs">{service}</span>
 				{/each}
 			</div>
 		{/if}

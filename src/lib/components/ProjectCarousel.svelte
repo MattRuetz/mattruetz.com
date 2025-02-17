@@ -10,7 +10,7 @@
 	let moving = $state(false);
 	const options: Options = {
 		type: 'loop',
-		perPage: 3,
+		perPage: 2,
 		wheel: true,
 		direction: 'ltr',
 		focus: 'center',
@@ -43,7 +43,7 @@
 	}
 </script>
 
-<div class="relative w-full overflow-x-hidden overflow-y-visible py-16">
+<div class="project-carousel relative w-full overflow-x-hidden overflow-y-visible py-16">
 	<div class="container mx-auto">
 		<div class="relative z-10 flex w-full items-center justify-center">
 			<Splide
@@ -63,9 +63,8 @@
 				{/each}
 			</Splide>
 		</div>
-
 		<div
-			class="z-0 mx-auto mt-16 max-w-5xl p-6 backdrop-blur-sm transition-opacity duration-300"
+			class="z-0 mx-auto mt-14 h-[130px] max-w-4xl p-6 backdrop-blur-sm transition-opacity duration-300"
 			style="opacity: {moving ? 0 : 1}"
 		>
 			{#if activeProject}
@@ -76,37 +75,37 @@
 </div>
 
 <style>
-	:global(.splide__slide, .splide__slide .card-container) {
+	:global(.project-carousel .splide__slide, .project-carousel .splide__slide .card-container) {
 		transition: all 0.3s ease-out;
 	}
 
-	:global(.splide__slide.is-active) {
+	:global(.project-carousel .splide__slide.is-active) {
 		z-index: 10;
 	}
 
-	:global(.splide__slide.is-active .card-info) {
+	:global(.project-carousel .splide__slide.is-active .card-info) {
 		opacity: 1;
 	}
 
-	:global(.splide__slide.is-active .card-container) {
+	:global(.project-carousel .splide__slide.is-active .card-container) {
 		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
 		transform: scale(1.2);
 	}
 
-	:global(.splide__slide.is-active .card-container:hover) {
+	:global(.project-carousel .splide__slide.is-active .card-container:hover) {
 		transform: scale(1.2) translateY(-5px);
 	}
 
-	:global(.splide__slide:not(.is-active) .card-container) {
+	:global(.project-carousel .splide__slide:not(.is-active) .card-container) {
 		filter: opacity(0.5);
 		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
 	}
 
-	:global(.splide__track) {
+	:global(.project-carousel .splide__track) {
 		overflow: visible;
 	}
 
-	:global(.splide__list) {
+	:global(.project-carousel .splide__list) {
 		overflow: visible;
 	}
 </style>

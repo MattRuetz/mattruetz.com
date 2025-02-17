@@ -8,9 +8,11 @@
 	import WhatSetsMeApartSection from '$lib/components/page-sections/home/WhatSetsMeApartSection.svelte';
 	import BrandSection from '$lib/components/page-sections/home/BrandSection.svelte';
 	import EcommerceSection from '$lib/components/page-sections/home/EcommerceSection.svelte';
+	import ServicesSection from '$lib/components/page-sections/home/Services.svelte';
 	import ProjectsSection from '$lib/components/page-sections/home/ProjectsSection.svelte';
 	import CallToActionSection from '$lib/components/page-sections/home/CallToActionSection.svelte';
 	import FeaturedProjectsSection from '$lib/components/page-sections/home/FeaturedProjectsSection.svelte';
+	import TestimonialsSection from '$lib/components/page-sections/home/TestimonialsSection.svelte';
 
 	// Properly access the proxy-wrapped props
 	let { data } = $props();
@@ -18,6 +20,7 @@
 
 	// Reactive derived values using proxy-safe access
 	const projects = $derived(data?.projects || []);
+	const testimonials = $derived(data?.testimonials || []);
 	const pagination = $derived({
 		currentPage: data?.pagination?.currentPage || 1,
 		totalPages: data?.pagination?.totalPages || 1,
@@ -38,10 +41,6 @@
 		isLoading = false;
 	});
 
-	// Hero section background animation
-	let mouseX = $state(0);
-	let mouseY = $state(0);
-
 	onMount(async () => {
 		if (!browser) return;
 		const { animatePage } = await import('$lib/animations/gsapAnimations');
@@ -60,26 +59,16 @@
 	const techLogo3 = $derived(data?.page?.homeFields?.techLogo3 || null);
 	const desktopScrollthru = $derived(data?.page?.homeFields?.desktopScrollthru || null);
 	const mobileScrollthru = $derived(data?.page?.homeFields?.mobileScrollthru || null);
-	const defaultImage = '/images/default-profile.jpg';
-
-	let imageError = $state(false);
-	let imageLoading = $state(true);
-
-	function handleImageError() {
-		imageError = true;
-	}
-
-	function handleImageLoad() {
-		imageLoading = false;
-	}
 </script>
 
 <HeroSection />
 <IntroductionSection {profileImage} />
-
-<!-- Replaced inline sections with components -->
-<WhatSetsMeApartSection />
 <FeaturedProjectsSection {projects} />
+<TestimonialsSection {testimonials} />
+
+<ServicesSection />
+
+<WhatSetsMeApartSection />
 
 <BrandSection {desktopScrollthru} {mobileScrollthru} />
 

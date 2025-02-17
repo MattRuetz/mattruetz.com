@@ -7,16 +7,12 @@
 	let { project, index } = $props();
 </script>
 
-<!--
-	The link is wrapped in a "group" so we can control hover styles on desktop.
--->
 <a
 	href="/project/{project.slug}"
-	class="group relative block overflow-hidden rounded-lg border border-gray-200 text-inherit no-underline transition-all duration-200 hover:!translate-y-0"
+	class="relative block overflow-hidden rounded-lg border border-gray-200 text-inherit no-underline transition-all duration-200 hover:!translate-y-0"
 	in:fly={{ y: 50, duration: 400, delay: index * 100, easing: quintOut }}
 >
-	<!-- Image container with a condensed (shorter) height -->
-	<div class="relative h-96 w-full">
+	<div class="relative h-[350px] max-h-[45dvh] w-full">
 		{#if project.acf.page_scroll_image}
 			<img
 				src={project.acf.page_scroll_image}

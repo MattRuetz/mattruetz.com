@@ -1,3 +1,18 @@
+import type { Testimonial } from '$lib/types';
+
+function decodeHTMLEntities(text: string): string {
+	const entities: Record<string, string> = {
+		'&#8217;': "'",
+		'&#8216;': "'",
+		'&#8220;': '"',
+		'&#8221;': '"',
+		'&quot;': '"',
+		'&amp;': '&',
+		'&#038;': '&'
+	};
+	return text ? text.replace(/&#?\w+;/g, (match) => entities[match] || match) : '';
+}
+
 interface WordPressPost {
 	id: number;
 	title: { rendered: string };
@@ -164,9 +179,9 @@ export const load = async ({ fetch, url }) => {
 
 			return {
 				id: project.id,
-				title: project.title.rendered,
-				excerpt: project.excerpt.rendered,
-				content: project.content.rendered,
+				title: decodeHTMLEntities(project.title.rendered),
+				excerpt: decodeHTMLEntities(project.excerpt.rendered),
+				content: decodeHTMLEntities(project.content.rendered),
 				image: project._embedded?.['wp:featuredmedia']?.[0]?.source_url || null,
 				slug: project.slug,
 				date: new Date(project.date).toLocaleDateString(),
@@ -174,6 +189,8 @@ export const load = async ({ fetch, url }) => {
 			};
 		})
 	);
+
+	const testimonials = await getTestimonials(fetch);
 
 	return {
 		page: {
@@ -192,6 +209,7 @@ export const load = async ({ fetch, url }) => {
 			}
 		},
 		projects: processedProjects,
+		testimonials,
 		pagination: {
 			currentPage: page,
 			totalPages,
@@ -202,3 +220,100 @@ export const load = async ({ fetch, url }) => {
 		}
 	};
 };
+
+async function getTestimonials(fetch: typeof globalThis.fetch): Promise<Testimonial[]> {
+	try {
+		const response = await fetch('https://mattruetz.com/graphql', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify({
+				query: `
+					query GetTestimonials {
+						testimonials {
+							nodes {
+								testimonialFields {
+									authorName
+									authorTitle
+									message
+									focusPart
+									isFeatured
+									featuredIndex
+									rating
+									authorPhoto {
+										node {
+											sourceUrl(size: MEDIUM)
+											altText
+											mediaDetails {
+												height
+												width
+											}
+										}
+									}
+									relatedProject {
+										node {
+										__typename
+										... on Project {
+												id
+												slug
+												title
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				`
+			})
+		});
+
+		const data = await response.json();
+
+		// console.log('GraphQL Response:', JSON.stringify(data, null, 2));
+
+		if (data.errors) {
+			console.error('GraphQL Errors:', data.errors);
+			return [];
+		}
+
+		if (!data.data?.testimonials?.nodes) {
+			console.error('Unexpected response structure:', data);
+			return [];
+		}
+
+		return data.data.testimonials.nodes.map((node: { testimonialFields: Testimonial }) => ({
+			...node.testimonialFields,
+			authorName: decodeHTMLEntities(node.testimonialFields.authorName),
+			authorTitle: decodeHTMLEntities(node.testimonialFields.authorTitle),
+			message: decodeHTMLEntities(node.testimonialFields.message),
+			isFeatured: node.testimonialFields.isFeatured,
+			featuredIndex: node.testimonialFields.featuredIndex,
+			focusPart: decodeHTMLEntities(node.testimonialFields.focusPart),
+			rating: node.testimonialFields.rating,
+			authorPhoto: {
+				...node.testimonialFields.authorPhoto,
+				node: node.testimonialFields.authorPhoto?.node
+					? {
+							sourceUrl: node.testimonialFields.authorPhoto.node.sourceUrl,
+							altText: decodeHTMLEntities(node.testimonialFields.authorPhoto.node.altText)
+						}
+					: undefined
+			},
+			relatedProject: node.testimonialFields.relatedProject
+				? {
+						node: {
+							databaseId: node.testimonialFields.relatedProject.node?.databaseId,
+							slug: node.testimonialFields.relatedProject.node?.slug,
+							title: decodeHTMLEntities(node.testimonialFields.relatedProject.node?.title || '')
+						}
+					}
+				: undefined
+		}));
+	} catch (error) {
+		console.error('Error fetching testimonials:', error);
+		return [];
+	}
+}
