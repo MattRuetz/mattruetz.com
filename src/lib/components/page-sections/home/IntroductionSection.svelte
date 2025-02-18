@@ -1,5 +1,11 @@
 <script lang="ts">
-	import { faCode, faPaintBrush, faSearch, faInfo } from '@fortawesome/free-solid-svg-icons';
+	import {
+		faCode,
+		faPaintBrush,
+		faSearch,
+		faInfo,
+		faShoppingCart
+	} from '@fortawesome/free-solid-svg-icons';
 	import AnimatedHandwriting from '$lib/components/AnimatedHandwriting.svelte';
 	import LittleServiceCard from '$lib/components/LittleServiceCard.svelte';
 
@@ -81,7 +87,7 @@
 			<LittleServiceCard
 				title="Optimized E-Commerce"
 				description="I build e-commerce websites that are optimized for sales and conversions."
-				icon={faCode}
+				icon={faShoppingCart}
 			/>
 			<LittleServiceCard
 				title="Informational Websites"
@@ -89,9 +95,9 @@
 				icon={faInfo}
 			/>
 			<LittleServiceCard
-				title="SEO Optimized"
-				description="I optimize websites for search engines to improve visibility and traffic."
-				icon={faSearch}
+				title="Custom Development"
+				description="I develop full-stack applications and custom tools from the ground up."
+				icon={faCode}
 			/>
 			<LittleServiceCard
 				title="Brand Identity Design"
