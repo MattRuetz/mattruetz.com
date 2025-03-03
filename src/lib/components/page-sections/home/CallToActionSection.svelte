@@ -3,7 +3,7 @@
 	import Button from '$lib/components/Button.svelte';
 </script>
 
-<section class="py-20">
+<section class="bg-background2 py-20">
 	<div class="relative container mx-auto px-4">
 		<div
 			in:fade={{ duration: 400 }}

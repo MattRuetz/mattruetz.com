@@ -68,11 +68,11 @@
 
 <ServicesSection />
 
-<WhatSetsMeApartSection />
-
-<BrandSection {desktopScrollthru} {mobileScrollthru} />
+<!-- <WhatSetsMeApartSection /> -->
 
 <EcommerceSection {techLogo1} {techLogo2} {techLogo3} />
+
+<BrandSection {desktopScrollthru} {mobileScrollthru} />
 
 <!-- <ProjectsSection {projects} {pagination} {isLoading} {handlePageChange} /> -->
 

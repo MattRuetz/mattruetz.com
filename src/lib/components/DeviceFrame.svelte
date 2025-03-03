@@ -11,7 +11,7 @@
 
 	const frameClasses: Record<string, string> = {
 		monitor: 'w-full max-w-4xl',
-		phone: 'w-full max-w-[280px]'
+		phone: 'w-full md:max-w-[280px]'
 	};
 </script>
 
@@ -33,7 +33,7 @@
 		</div>
 	{:else}
 		<div
-			class="phone-frame absolute -top-45 -left-20 w-full rounded-[1rem] border-[0.4rem] border-gray-900 bg-gray-800 shadow-2xl"
+			class="phone-frame relative top-0 left-0 w-full rounded-[1rem] border-[0.4rem] border-gray-900 bg-gray-800 shadow-2xl md:absolute md:-top-45 md:-left-20"
 		>
 			<div class="image-wrapper {aspectRatios[type]} relative overflow-hidden rounded-lg">
 				<img
@@ -41,7 +41,7 @@
 					alt={image?.altText || 'Mobile Scrollthru'}
 					width={image?.mediaDetails?.width}
 					height={image?.mediaDetails?.height}
-					class="scroll-image absolute top-0 left-0 w-full object-cover object-top"
+					class="scroll-image top-0 left-0 w-full object-cover object-top"
 					loading="lazy"
 				/>
 			</div>

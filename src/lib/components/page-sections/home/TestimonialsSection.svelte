@@ -27,7 +27,7 @@
 	const options: Options = {
 		type: 'loop',
 		perPage: 1,
-		wheel: true,
+		wheel: false,
 		direction: 'ltr',
 		gap: '1rem',
 		arrows: false,

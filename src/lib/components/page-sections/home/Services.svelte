@@ -88,7 +88,7 @@
 </script>
 
 <section id="services" class="relative overflow-hidden px-4 py-26">
-	<div class="container mx-auto">
+	<div class="wide-container">
 		<div class="flex flex-col items-center">
 			<h2 class="sr-only">Services - What We Offer</h2>
 			<div class="relative mb-16 w-full max-w-[500px]">
@@ -112,8 +112,8 @@
 								</div>
 								<h3
 									class="flex-1 font-bold transition-all duration-300 {activeIndex === i
-										? 'text-4xl'
-										: 'text-3xl'}"
+										? 'text-2xl md:text-3xl'
+										: 'text-xl md:text-2xl'}"
 								>
 									{service.title}
 								</h3>
