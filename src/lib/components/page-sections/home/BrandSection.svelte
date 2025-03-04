@@ -35,8 +35,10 @@
 	});
 </script>
 
-<section class="brand-section bg-background2 relative px-4 py-12 sm:py-16 md:py-20">
-	<div class="mx-auto max-w-6xl">
+<section
+	class="brand-section bg-background2 relative overflow-visible px-4 py-[80px] sm:py-16 md:py-20"
+>
+	<div class="max-w-8xl mx-auto">
 		<div class="brand-card rounded-2xl p-6 sm:p-8 md:p-12">
 			<div class="flex flex-col gap-8 lg:flex-row-reverse lg:items-center lg:gap-16">
 				<!-- Content Side -->
@@ -44,20 +46,20 @@
 					<h2
 						class="text-text mb-6 text-center text-4xl leading-tight font-bold md:text-left md:text-6xl lg:text-7xl"
 					>
-						Elevate Your Brand
+						Elevate Your <span class="gradient-text font-black">Brand</span>
 					</h2>
 
 					<ul class="mb-8 space-y-4 text-base sm:text-lg">
-						<li class="feature-item">
-							<span class="feature-check">✓</span>
+						<li class="flex items-start gap-3 md:items-center">
+							<span class="text-primary mt-0.5 flex-shrink-0 text-lg md:mt-0">✓</span>
 							<span>Fully Responsive - Optimized to look perfect on all devices</span>
 						</li>
-						<li class="feature-item">
-							<span class="feature-check">✓</span>
+						<li class="flex items-start gap-3 md:items-center">
+							<span class="text-primary mt-0.5 flex-shrink-0 text-lg md:mt-0">✓</span>
 							<span>Custom Development - Every site is unique and tailored to your needs</span>
 						</li>
-						<li class="feature-item">
-							<span class="feature-check">✓</span>
+						<li class="flex items-start gap-3 md:items-center">
+							<span class="text-primary mt-0.5 flex-shrink-0 text-lg md:mt-0">✓</span>
 							<span
 								>Seamless Integration - Your site will work perfectly with your existing tools</span
 							>
@@ -70,7 +72,7 @@
 				</div>
 
 				<!-- Devices Side -->
-				<div class="devices-showcase mt-8 w-full lg:mt-0 lg:w-1/2">
+				<div class="-mx-4 mt-8 w-full md:mx-0 md:w-auto lg:mt-0 lg:w-1/2">
 					<div
 						class="relative flex flex-col items-center md:flex-row md:items-end md:justify-center"
 					>
@@ -91,41 +93,6 @@
 </section>
 
 <style>
-	.brand-section {
-		overflow: hidden;
-	}
-
-	.feature-item {
-		display: flex;
-		align-items: flex-start;
-		gap: 0.75rem;
-	}
-
-	.feature-check {
-		color: var(--color-primary);
-		font-size: 1.1rem;
-		flex-shrink: 0;
-		margin-top: 0.125rem;
-	}
-
-	@media (min-width: 768px) {
-		.feature-item {
-			align-items: center;
-		}
-
-		.feature-check {
-			margin-top: 0;
-		}
-	}
-
-	@media (max-width: 768px) {
-		.devices-showcase {
-			margin-left: -1rem;
-			margin-right: -1rem;
-			width: calc(100% + 2rem);
-		}
-	}
-
 	@media (max-width: 480px) {
 		h2 {
 			font-size: 2.25rem;
