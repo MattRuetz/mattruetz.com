@@ -6,8 +6,6 @@
 
 	const { desktopScrollthru, mobileScrollthru } = $props();
 
-	console.log('BrandSection props:', { desktopScrollthru, mobileScrollthru });
-
 	onMount(async () => {
 		if (!browser) return;
 		const { gsap } = await import('gsap');

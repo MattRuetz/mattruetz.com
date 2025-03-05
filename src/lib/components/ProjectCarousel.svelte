@@ -80,7 +80,6 @@
 			setTimeout(() => {
 				try {
 					splide.refresh();
-					console.log('Splide refreshed with mobile:', isMobile);
 				} catch (e) {
 					console.error('Error refreshing Splide:', e);
 				}
@@ -108,7 +107,6 @@
 		setTimeout(() => {
 			if (splide?.splide) {
 				splide.refresh();
-				console.log('Initial Splide refresh with mobile:', isMobile);
 			}
 		}, 100);
 

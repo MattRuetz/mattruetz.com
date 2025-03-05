@@ -436,16 +436,12 @@ export async function fetchHomePageData(
 
 		const data = await response.json();
 
-		console.log('GraphQL Home Page Response:', JSON.stringify(data, null, 2));
-
 		// Extract the home fields from the response
 		const homeFields = data?.data?.page?.homeFields;
 		if (!homeFields) {
 			console.error('No homeFields found in response:', data);
 			return null;
 		}
-
-		console.log('Home Fields:', JSON.stringify(homeFields, null, 2));
 
 		// Process the fields to a cleaner structure
 		const result = {
@@ -498,8 +494,6 @@ export async function fetchHomePageData(
 					}
 				: null
 		};
-
-		console.log('Processed Home Data:', JSON.stringify(result, null, 2));
 
 		return result;
 	} catch (error) {

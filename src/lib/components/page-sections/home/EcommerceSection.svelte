@@ -7,7 +7,6 @@
 	import { browser } from '$app/environment';
 	import Button from '$lib/components/Button.svelte';
 	const { techLogo1, techLogo2, techLogo3 } = $props();
-	console.log('EcommerceSection props:', { techLogo1, techLogo2, techLogo3 });
 
 	let activeTab = $state<string>('shopify');
 	let isMobile = $state(false);

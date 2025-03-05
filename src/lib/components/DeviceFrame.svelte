@@ -4,8 +4,6 @@
 
 	const { type = 'monitor', image } = $props();
 
-	console.log(`DeviceFrame ${type} image:`, image);
-
 	const aspectRatios: Record<string, string> = {
 		monitor: 'aspect-[16/9]',
 		phone: 'aspect-[9/19.5]'
