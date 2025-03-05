@@ -4,6 +4,8 @@
 
 	const { type = 'monitor', image } = $props();
 
+	console.log(`DeviceFrame ${type} image:`, image);
+
 	const aspectRatios: Record<string, string> = {
 		monitor: 'aspect-[16/9]',
 		phone: 'aspect-[9/19.5]'
@@ -21,14 +23,20 @@
 			class="monitor-frame relative rounded-2xl border-[12px] border-gray-900 bg-gray-800 shadow-2xl"
 		>
 			<div class="image-wrapper {aspectRatios[type]} relative overflow-hidden rounded-lg">
-				<img
-					src={image?.sourceUrl}
-					alt={image?.altText || 'Desktop Scrollthru'}
-					width={image?.mediaDetails?.width}
-					height={image?.mediaDetails?.height}
-					class="scroll-image absolute top-0 left-0 w-full object-cover object-top"
-					loading="lazy"
-				/>
+				{#if image?.sourceUrl}
+					<img
+						src={image.sourceUrl}
+						alt={image?.altText || 'Desktop Scrollthru'}
+						width={image?.mediaDetails?.width}
+						height={image?.mediaDetails?.height}
+						class="scroll-image absolute top-0 left-0 w-full object-cover object-top"
+						loading="lazy"
+					/>
+				{:else}
+					<div class="flex h-full w-full items-center justify-center bg-gray-700 text-white">
+						No image available
+					</div>
+				{/if}
 			</div>
 		</div>
 	{:else}
@@ -36,14 +44,20 @@
 			class="phone-frame relative top-0 left-0 w-full rounded-[1rem] border-[0.4rem] border-gray-900 bg-gray-800 shadow-2xl md:absolute md:-top-45 md:-left-20"
 		>
 			<div class="image-wrapper {aspectRatios[type]} relative overflow-hidden rounded-lg">
-				<img
-					src={image?.sourceUrl}
-					alt={image?.altText || 'Mobile Scrollthru'}
-					width={image?.mediaDetails?.width}
-					height={image?.mediaDetails?.height}
-					class="scroll-image top-0 left-0 w-full object-cover object-top"
-					loading="lazy"
-				/>
+				{#if image?.sourceUrl}
+					<img
+						src={image.sourceUrl}
+						alt={image?.altText || 'Mobile Scrollthru'}
+						width={image?.mediaDetails?.width}
+						height={image?.mediaDetails?.height}
+						class="scroll-image top-0 left-0 w-full object-cover object-top"
+						loading="lazy"
+					/>
+				{:else}
+					<div class="flex h-full w-full items-center justify-center bg-gray-700 text-white">
+						No image available
+					</div>
+				{/if}
 			</div>
 		</div>
 	{/if}

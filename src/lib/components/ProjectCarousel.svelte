@@ -10,7 +10,9 @@
 	let splide: Splide;
 	let activeProject = $state(projects?.[0]);
 	let moving = $state(false);
-	let isMobile = $state(false);
+
+	// Initialize isMobile with the correct value immediately
+	let isMobile = $state(browser ? window.innerWidth < 768 : false);
 
 	// Check if we're on a mobile device
 	function checkMobile() {
@@ -19,8 +21,8 @@
 		}
 	}
 
-	// Base options for the carousel
-	const getOptions = (): Options => {
+	// Create a reactive getter for options that will update when isMobile changes
+	function getOptions(): Options {
 		const baseOptions: Options = {
 			type: 'loop',
 			direction: 'ltr',
@@ -46,9 +48,11 @@
 			return {
 				...baseOptions,
 				perPage: 1,
-				gap: '1rem',
+				gap: '0.5rem',
 				wheel: false,
 				pagination: true,
+				padding: { left: '1%', right: '1%' }, // Even less padding to show nearly full-width
+				focus: 'center',
 				classes: {
 					pagination: 'splide__pagination mobile-pagination'
 				}
@@ -60,11 +64,29 @@
 			...baseOptions,
 			perPage: 2,
 			gap: '2rem',
-			wheel: true
+			wheel: false
 		};
-	};
+	}
 
+	// Set up options using the reactive state
 	let options = $state(getOptions());
+
+	// Make options reactive to isMobile changes
+	$effect(() => {
+		options = getOptions();
+
+		// Only refresh if Splide is already initialized
+		if (splide?.splide) {
+			setTimeout(() => {
+				try {
+					splide.refresh();
+					console.log('Splide refreshed with mobile:', isMobile);
+				} catch (e) {
+					console.error('Error refreshing Splide:', e);
+				}
+			}, 10);
+		}
+	});
 
 	function handleMoved(e: CustomEvent<{ index: number }> | undefined) {
 		if (!e) return;
@@ -78,22 +100,21 @@
 	}
 
 	onMount(() => {
+		// Double-check mobile state on mount and refresh carousel
 		checkMobile();
-		window.addEventListener('resize', () => {
-			const wasMobile = isMobile;
-			checkMobile();
+		options = getOptions();
 
-			// Only update options if mobile state changed
-			if (wasMobile !== isMobile) {
-				options = getOptions();
-
-				// Need to refresh the Splide instance when options change
-				setTimeout(() => {
-					if (splide) {
-						splide.refresh();
-					}
-				}, 0);
+		// Force refresh after a brief delay to ensure proper initialization
+		setTimeout(() => {
+			if (splide?.splide) {
+				splide.refresh();
+				console.log('Initial Splide refresh with mobile:', isMobile);
 			}
+		}, 100);
+
+		window.addEventListener('resize', () => {
+			checkMobile();
+			// Splide refresh is now handled by the $effect
 		});
 
 		return () => {
@@ -102,13 +123,13 @@
 	});
 </script>
 
-<div class="project-carousel relative w-full overflow-x-hidden overflow-y-visible py-8 md:py-16">
-	<div class="container mx-auto px-4">
+<div class="project-carousel relative w-full overflow-x-hidden overflow-y-hidden py-8 md:py-16">
+	<div class="container-wide mx-auto px-0 sm:px-4">
 		<div class="relative z-10 flex w-full items-center justify-center">
 			<Splide
 				{options}
 				aria-label="Featured Projects"
-				class="w-full overflow-visible"
+				class="mobile-fullwidth-carousel w-full overflow-visible"
 				bind:this={splide}
 				on:moved={handleMoved}
 				on:move={handleMove}
@@ -125,7 +146,7 @@
 
 		<!-- Project info section - different layout for mobile vs desktop -->
 		<div
-			class="z-0 mx-auto mt-6 max-w-4xl p-4 backdrop-blur-sm transition-opacity duration-300 md:mt-14 md:h-[130px] md:p-6"
+			class="z-0 mx-auto mt-10 max-w-4xl p-4 backdrop-blur-sm transition-opacity duration-300 md:mt-14 md:h-[130px] md:p-6"
 			style="opacity: {moving ? 0 : 1}"
 		>
 			{#if activeProject}
@@ -167,12 +188,35 @@
 		:global(.project-carousel .splide__slide.is-active .card-container) {
 			box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
 			transform: scale(1.05);
+			opacity: 1;
+			width: 94%; /* Control width of active slide */
+			margin: 0 auto;
 		}
-	}
 
-	:global(.project-carousel .splide__slide:not(.is-active) .card-container) {
-		filter: opacity(0.5);
-		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+		:global(.project-carousel .splide__slide:not(.is-active) .card-container) {
+			opacity: 0.3;
+			filter: blur(1px);
+			transform: scale(0.85);
+		}
+
+		:global(.project-carousel .splide__slide) {
+			transition: all 0.4s ease;
+		}
+
+		:global(.mobile-fullwidth-carousel) {
+			width: 100vw !important;
+			max-width: 100vw !important;
+			position: relative;
+		}
+
+		:global(.mobile-fullwidth-carousel .splide__track) {
+			overflow: visible !important;
+			padding: 10px 0;
+		}
+
+		:global(.card-container) {
+			width: 100%;
+		}
 	}
 
 	:global(.project-carousel .splide__track) {
@@ -208,7 +252,7 @@
 
 	/* Mobile pagination styling */
 	:global(.mobile-pagination) {
-		bottom: -1.5rem !important;
+		bottom: -2rem !important;
 		display: flex;
 		justify-content: center;
 		margin-top: 1rem;

@@ -23,7 +23,7 @@
 	class="relative block overflow-hidden rounded-lg border border-gray-200 text-inherit no-underline transition-all duration-200 hover:!translate-y-0"
 	in:fly={{ y: 50, duration: 400, delay: index * 100, easing: quintOut }}
 >
-	<div class="relative h-[200px] max-h-[45dvh] w-full sm:h-[300px] md:h-[350px]">
+	<div class="relative h-[300px] max-h-[45dvh] w-full md:h-[300px]">
 		{#if project.acf.page_scroll_image}
 			<img
 				src={project.acf.page_scroll_image}

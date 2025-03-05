@@ -1,16 +1,14 @@
-export async function load({ params, fetch }) {
-	const response = await fetch(
-		`https://mattruetz.com/wp-json/wp/v2/project?slug=${params.slug}&_embed&acf_format=standard`
-	);
-	const projects = await response.json();
+import { fetchProjectBySlug } from '$lib/api/wordpress';
+import type { PageServerLoad } from './$types';
 
-	if (!projects.length) {
+export const load: PageServerLoad = async ({ params, fetch }) => {
+	const project = await fetchProjectBySlug(fetch, params.slug);
+
+	if (!project) {
 		throw new Error('Project not found');
 	}
 
-	const project = projects[0];
-
-	// Process ACF image fields
+	// Process ACF image fields (this is specific to individual projects and needs additional processing)
 	const processedAcf = { ...project.acf };
 	const imageFields = [
 		'feature_image_1',
@@ -44,15 +42,11 @@ export async function load({ params, fetch }) {
 		}
 	}
 
+	// Return the project with processed ACF fields
 	return {
 		project: {
-			id: project.id,
-			title: project.title.rendered,
-			content: project.content.rendered,
-			excerpt: project.excerpt.rendered,
-			image: project._embedded?.['wp:featuredmedia']?.[0]?.source_url || null,
-			date: new Date(project.date).toLocaleDateString(),
+			...project,
 			acf: processedAcf
 		}
 	};
-}
+};

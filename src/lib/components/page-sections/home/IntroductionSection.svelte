@@ -33,7 +33,7 @@
 </script>
 
 <section class="introduction-content py-20 md:pt-24">
-	<div class="container mx-auto px-4">
+	<div class="container-wide mx-auto px-4">
 		<!-- Top Section with Image and Introduction -->
 		<div class="mb-4 grid gap-12 md:grid-cols-2 md:gap-16">
 			<!-- Left Column - Image and Name -->

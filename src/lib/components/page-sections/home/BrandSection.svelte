@@ -6,6 +6,8 @@
 
 	const { desktopScrollthru, mobileScrollthru } = $props();
 
+	console.log('BrandSection props:', { desktopScrollthru, mobileScrollthru });
+
 	onMount(async () => {
 		if (!browser) return;
 		const { gsap } = await import('gsap');
@@ -35,9 +37,7 @@
 	});
 </script>
 
-<section
-	class="brand-section bg-background2 relative overflow-visible px-4 py-[80px] sm:py-16 md:py-20"
->
+<section class="brand-section relative overflow-visible px-4 py-[80px] sm:py-16 md:py-20">
 	<div class="max-w-8xl mx-auto">
 		<div class="brand-card rounded-2xl p-6 sm:p-8 md:p-12">
 			<div class="flex flex-col gap-8 lg:flex-row-reverse lg:items-center lg:gap-16">
