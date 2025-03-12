@@ -51,14 +51,14 @@
 	class:py-2={scrolled}
 	class:py-4={!scrolled}
 >
-	<div class="mx-auto max-w-7xl px-4 sm:px-6">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 md:py-2">
 		<div class="flex items-center justify-between">
 			<!-- Logo -->
 			<a href="/" class="flex items-center">
 				<img
 					src="/images/branding/Logo Final - Black.png"
 					alt="Matt Ruetz Web Solutions"
-					class="h-auto w-[120px] transition-all duration-300 md:w-[150px]"
+					class="h-auto w-[120px] transition-all duration-300 md:w-[180px]"
 					class:w-[100px]={scrolled}
 					class:md:w-[120px]={scrolled}
 				/>

@@ -3,6 +3,8 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Fa from 'svelte-fa';
 	import { faEnvelope, faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 
 	let formData = $state({
 		name: '',
@@ -15,6 +17,12 @@
 		submitted: false,
 		error: false,
 		message: ''
+	});
+
+	onMount(async () => {
+		if (!browser) return;
+		const { animateContactPage } = await import('$lib/animations/gsapAnimations');
+		animateContactPage();
 	});
 
 	async function handleSubmit() {

@@ -3,6 +3,8 @@
 	import { onNavigate } from '$app/navigation';
 	import ProjectsSection from '$lib/components/page-sections/home/ProjectsSection.svelte';
 	import MinimalCTA from '$lib/components/page-sections/MinimalCTA.svelte';
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 
 	// Get the data from the server load function
 	let { data } = $props();
@@ -20,6 +22,12 @@
 			hasPreviousPage: false
 		}
 	);
+
+	onMount(async () => {
+		if (!browser) return;
+		const { animatePortfolioPage } = await import('$lib/animations/gsapAnimations');
+		animatePortfolioPage();
+	});
 
 	// Handle page changes
 	async function handlePageChange(newPage: number): Promise<void> {

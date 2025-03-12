@@ -6,6 +6,14 @@
 	import { faReact, faJs, faPython, faNodeJs, faPhp } from '@fortawesome/free-brands-svg-icons';
 	import MinimalCTA from '$lib/components/page-sections/MinimalCTA.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
+
+	onMount(async () => {
+		if (!browser) return;
+		const { animateAboutPage } = await import('$lib/animations/gsapAnimations');
+		animateAboutPage();
+	});
 </script>
 
 <Header />
@@ -87,9 +95,9 @@
 				</div>
 
 				<!-- Content Column -->
-				<div class="lg:w-3/5">
-					<h2 class="mb-6 text-3xl font-bold">Hello, I'm Matthew Ruetz</h2>
-					<div class="space-y-6 text-lg">
+				<div class="bio-content lg:w-3/5">
+					<h2 class="bio-title mb-6 text-3xl font-bold">Hello, I'm Matthew Ruetz</h2>
+					<div class="bio-text space-y-6 text-lg">
 						<p>
 							I'm a web developer with a passion for creating innovative, responsive, and
 							user-friendly websites and applications. With expertise in both frontend and backend
@@ -109,7 +117,7 @@
 							web innovation.
 						</p>
 
-						<h3 class="pt-4 text-2xl font-bold">My Approach</h3>
+						<h3 class="bio-subtitle pt-4 text-2xl font-bold">My Approach</h3>
 						<p>
 							I believe in a collaborative approach to web development. Every project begins with a
 							thorough understanding of your needs, goals, and target audience. This foundation
@@ -123,36 +131,36 @@
 							long-term value.
 						</p>
 
-						<h3 class="pt-4 text-2xl font-bold">Why Work With Me</h3>
-						<ul class="space-y-3">
-							<li class="flex items-start">
+						<h3 class="bio-subtitle pt-4 text-2xl font-bold">Why Work With Me</h3>
+						<ul class="bio-list space-y-3">
+							<li class="bio-list-item flex items-start">
 								<span class="text-primary mt-1 mr-2 text-lg">✓</span>
 								<span
 									>I prioritize your business goals and user experience in every project I
 									undertake.</span
 								>
 							</li>
-							<li class="flex items-start">
+							<li class="bio-list-item flex items-start">
 								<span class="text-primary mt-1 mr-2 text-lg">✓</span>
 								<span
 									>With expertise in a wide range of technologies, I can choose the best tools for
 									your specific needs.</span
 								>
 							</li>
-							<li class="flex items-start">
+							<li class="bio-list-item flex items-start">
 								<span class="text-primary mt-1 mr-2 text-lg">✓</span>
 								<span
 									>I believe in clean, well-documented code that is easy to maintain and extend.</span
 								>
 							</li>
-							<li class="flex items-start">
+							<li class="bio-list-item flex items-start">
 								<span class="text-primary mt-1 mr-2 text-lg">✓</span>
 								<span
 									>I'm committed to meeting deadlines and delivering projects on time and within
 									budget.</span
 								>
 							</li>
-							<li class="flex items-start">
+							<li class="bio-list-item flex items-start">
 								<span class="text-primary mt-1 mr-2 text-lg">✓</span>
 								<span
 									>I provide ongoing support and maintenance to ensure your website continues to
@@ -162,7 +170,7 @@
 						</ul>
 					</div>
 
-					<div class="mt-12">
+					<div class="bio-cta mt-12">
 						<Button href="/contact" isPrimary={true}>Let's Work Together</Button>
 					</div>
 				</div>
@@ -173,41 +181,41 @@
 	<!-- Skills Section -->
 	<section class="bg-background2 px-4 py-16">
 		<div class="mx-auto max-w-6xl">
-			<h2 class="mb-12 text-center text-3xl font-bold">
+			<h2 class="skills-heading mb-12 text-center text-3xl font-bold">
 				My <span class="gradient-text font-black">Skills</span>
 			</h2>
 
-			<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+			<div class="skills-grid grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
 				<!-- Frontend Development -->
-				<div class="rounded-xl bg-white p-6 shadow-md">
+				<div class="skill-card rounded-xl bg-white p-6 shadow-md">
 					<div
-						class="text-primary bg-primary/10 mb-5 flex h-14 w-14 items-center justify-center rounded-lg"
+						class="skill-icon text-primary bg-primary/10 mb-5 flex h-14 w-14 items-center justify-center rounded-lg"
 					>
 						<Fa icon={faLaptopCode} size="lg" />
 					</div>
-					<h3 class="mb-4 text-xl font-bold">Frontend Development</h3>
-					<ul class="space-y-3">
-						<li class="flex items-center">
+					<h3 class="skill-title mb-4 text-xl font-bold">Frontend Development</h3>
+					<ul class="skill-list space-y-3">
+						<li class="skill-item flex items-center">
 							<Fa icon={faJs} class="mr-3 text-yellow-500" />
 							<span>JavaScript (ES6+)</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<Fa icon={faReact} class="mr-3 text-blue-400" />
 							<span>React & Next.js</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-orange-500">Sv</span>
 							<span>Svelte & SvelteKit</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-purple-500">TS</span>
 							<span>TypeScript</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-blue-600">TW</span>
 							<span>TailwindCSS</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-indigo-500">CSS</span>
 							<span>CSS3 & SCSS</span>
 						</li>
@@ -215,35 +223,35 @@
 				</div>
 
 				<!-- Backend Development -->
-				<div class="rounded-xl bg-white p-6 shadow-md">
+				<div class="skill-card rounded-xl bg-white p-6 shadow-md">
 					<div
-						class="text-primary bg-primary/10 mb-5 flex h-14 w-14 items-center justify-center rounded-lg"
+						class="skill-icon text-primary bg-primary/10 mb-5 flex h-14 w-14 items-center justify-center rounded-lg"
 					>
 						<Fa icon={faServer} size="lg" />
 					</div>
-					<h3 class="mb-4 text-xl font-bold">Backend Development</h3>
-					<ul class="space-y-3">
-						<li class="flex items-center">
+					<h3 class="skill-title mb-4 text-xl font-bold">Backend Development</h3>
+					<ul class="skill-list space-y-3">
+						<li class="skill-item flex items-center">
 							<Fa icon={faNodeJs} class="mr-3 text-green-600" />
 							<span>Node.js & Express</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<Fa icon={faPython} class="mr-3 text-blue-500" />
 							<span>Python & Django</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<Fa icon={faPhp} class="mr-3 text-purple-600" />
 							<span>PHP & Laravel</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-red-500">RB</span>
 							<span>Ruby on Rails</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-blue-700">GO</span>
 							<span>GoLang</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-orange-600">RS</span>
 							<span>Rust</span>
 						</li>
@@ -251,35 +259,35 @@
 				</div>
 
 				<!-- Database & Cloud -->
-				<div class="rounded-xl bg-white p-6 shadow-md">
+				<div class="skill-card rounded-xl bg-white p-6 shadow-md">
 					<div
-						class="text-primary bg-primary/10 mb-5 flex h-14 w-14 items-center justify-center rounded-lg"
+						class="skill-icon text-primary bg-primary/10 mb-5 flex h-14 w-14 items-center justify-center rounded-lg"
 					>
 						<Fa icon={faDatabase} size="lg" />
 					</div>
-					<h3 class="mb-4 text-xl font-bold">Database & Cloud</h3>
-					<ul class="space-y-3">
-						<li class="flex items-center">
+					<h3 class="skill-title mb-4 text-xl font-bold">Database & Cloud</h3>
+					<ul class="skill-list space-y-3">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-blue-500">SQL</span>
 							<span>PostgreSQL & MySQL</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-green-600">MG</span>
 							<span>MongoDB</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-red-600">RD</span>
 							<span>Redis</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-orange-500">AW</span>
 							<span>AWS (S3, EC2, Lambda)</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-blue-600">GC</span>
 							<span>Google Cloud Platform</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-blue-500">AZ</span>
 							<span>Microsoft Azure</span>
 						</li>
@@ -287,35 +295,35 @@
 				</div>
 
 				<!-- Other Skills -->
-				<div class="rounded-xl bg-white p-6 shadow-md">
+				<div class="skill-card rounded-xl bg-white p-6 shadow-md">
 					<div
-						class="text-primary bg-primary/10 mb-5 flex h-14 w-14 items-center justify-center rounded-lg"
+						class="skill-icon text-primary bg-primary/10 mb-5 flex h-14 w-14 items-center justify-center rounded-lg"
 					>
 						<Fa icon={faCode} size="lg" />
 					</div>
-					<h3 class="mb-4 text-xl font-bold">Other Skills</h3>
-					<ul class="space-y-3">
-						<li class="flex items-center">
+					<h3 class="skill-title mb-4 text-xl font-bold">Other Skills</h3>
+					<ul class="skill-list space-y-3">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-gray-700">GIT</span>
 							<span>Git & GitHub</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-blue-500">DK</span>
 							<span>Docker & Kubernetes</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-red-600">JK</span>
 							<span>Jenkins & CI/CD</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-purple-600">GQL</span>
 							<span>GraphQL</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-green-500">REST</span>
 							<span>RESTful APIs</span>
 						</li>
-						<li class="flex items-center">
+						<li class="skill-item flex items-center">
 							<span class="mr-3 text-orange-500">WP</span>
 							<span>WordPress Development</span>
 						</li>

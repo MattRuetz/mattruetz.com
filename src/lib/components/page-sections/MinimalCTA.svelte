@@ -4,9 +4,9 @@
 </script>
 
 <!-- CTA Section -->
-<section class="px-4 py-20">
+<section class="minimal-cta px-4 py-20">
 	<div
-		class="from-primary/10 to-primary/5 mx-auto max-w-4xl rounded-2xl bg-gradient-to-r p-8 text-center shadow-lg sm:p-12"
+		class="minimal-cta-container from-primary/10 to-primary/5 mx-auto max-w-4xl rounded-2xl bg-gradient-to-r p-8 text-center shadow-lg sm:p-12"
 	>
 		<h2 class="mb-6 text-3xl font-bold md:text-4xl">Ready to Start Your Project?</h2>
 		<p class="mx-auto mb-8 max-w-xl text-lg text-gray-700">

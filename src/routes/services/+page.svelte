@@ -12,6 +12,15 @@
 		faWrench,
 		faPaintBrush
 	} from '@fortawesome/free-solid-svg-icons';
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
+	import MinimalCTA from '$lib/components/page-sections/MinimalCTA.svelte';
+
+	onMount(async () => {
+		if (!browser) return;
+		const { animateServicesPage } = await import('$lib/animations/gsapAnimations');
+		animateServicesPage();
+	});
 </script>
 
 <Header />
@@ -288,31 +297,7 @@
 	</section>
 
 	<!-- CTA Section -->
-	<section class="px-4 py-20">
-		<div
-			class="from-primary/10 to-primary/5 mx-auto max-w-3xl rounded-2xl bg-gradient-to-r p-8 text-center sm:p-12"
-		>
-			<h2 class="mb-6 text-3xl font-bold md:text-4xl">Ready to Start Your Project?</h2>
-			<p class="mx-auto mb-8 max-w-xl text-lg text-gray-700">
-				Let's discuss your project requirements and create a website that perfectly represents your
-				brand and helps you achieve your business goals.
-			</p>
-			<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-				<a
-					href="/contact"
-					class="bg-primary shadow-primary/20 hover:shadow-primary/30 inline-flex min-w-[150px] items-center justify-center rounded-lg px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
-				>
-					Contact Me
-				</a>
-				<a
-					href="/hire-me"
-					class="border-primary text-primary inline-flex min-w-[150px] items-center justify-center rounded-lg border-2 px-6 py-[10px] font-semibold transition-all duration-300 hover:scale-105"
-				>
-					Start a Project
-				</a>
-			</div>
-		</div>
-	</section>
+	<MinimalCTA />
 </main>
 
 <Footer />
