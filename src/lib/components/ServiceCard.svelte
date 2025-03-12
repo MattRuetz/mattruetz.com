@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { faCheck } from '@fortawesome/free-solid-svg-icons';
 	import Fa from 'svelte-fa';
-	import Button from './Button.svelte';
+	import Button from './ui/Button.svelte';
 
 	let { buttonIcon, title, description, bulletPoints, ctaText, ctaLink, icon, index } = $props();
 

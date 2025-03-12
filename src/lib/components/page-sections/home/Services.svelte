@@ -5,7 +5,7 @@
 	import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 	import AnimatedDrawing from '$lib/components/AnimatedDrawing.svelte';
 	import AnimatedHandwriting from '$lib/components/AnimatedHandwriting.svelte';
-	import Button from '$lib/components/Button.svelte';
+	import Button from '$lib/components/ui/Button.svelte';
 	// import { trackPortfolioView, trackConsultationClick } from './Analytics.svelte';
 
 	let isMobile = false;

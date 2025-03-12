@@ -4,6 +4,8 @@
 	import Fa from 'svelte-fa';
 	import { faCode, faLaptopCode, faServer, faDatabase } from '@fortawesome/free-solid-svg-icons';
 	import { faReact, faJs, faPython, faNodeJs, faPhp } from '@fortawesome/free-brands-svg-icons';
+	import MinimalCTA from '$lib/components/page-sections/MinimalCTA.svelte';
+	import Button from '$lib/components/ui/Button.svelte';
 </script>
 
 <Header />
@@ -28,12 +30,18 @@
 				<!-- Image Column -->
 				<div class="lg:w-2/5">
 					<div class="sticky top-24">
-						<div class="overflow-hidden rounded-2xl shadow-xl">
-							<img
-								src="/img/profile.jpg"
-								alt="Matthew Ruetz"
-								class="h-full w-full object-cover object-center"
-							/>
+						<div class="overflow-hidden rounded-full">
+							<picture>
+								<source srcset="/images/about.webp" type="image/webp" />
+								<source srcset="/images/about.png" type="image/png" />
+								<img
+									src="/images/about.png"
+									alt="Matthew Ruetz"
+									class="h-full w-full object-cover object-center"
+									width="500"
+									height="600"
+								/>
+							</picture>
 						</div>
 						<div class="mt-8 flex flex-wrap justify-center gap-3">
 							<a
@@ -41,6 +49,7 @@
 								target="_blank"
 								rel="noreferrer"
 								class="text-primary hover:bg-primary border-primary flex h-12 w-12 items-center justify-center rounded-full border-2 transition-all duration-300 hover:text-white"
+								aria-label="GitHub"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -59,6 +68,7 @@
 								target="_blank"
 								rel="noreferrer"
 								class="text-primary hover:bg-primary border-primary flex h-12 w-12 items-center justify-center rounded-full border-2 transition-all duration-300 hover:text-white"
+								aria-label="LinkedIn"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -69,24 +79,6 @@
 								>
 									<path
 										d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-									/>
-								</svg>
-							</a>
-							<a
-								href="https://twitter.com/mattruetz"
-								target="_blank"
-								rel="noreferrer"
-								class="text-primary hover:bg-primary border-primary flex h-12 w-12 items-center justify-center rounded-full border-2 transition-all duration-300 hover:text-white"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="20"
-									height="20"
-									viewBox="0 0 24 24"
-									fill="currentColor"
-								>
-									<path
-										d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
 									/>
 								</svg>
 							</a>
@@ -171,13 +163,7 @@
 					</div>
 
 					<div class="mt-12">
-						<a
-							href="/contact"
-							class="bg-primary shadow-primary/20 hover:shadow-primary/30 inline-flex items-center rounded-lg px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
-						>
-							Let's Work Together
-							<span class="ml-2">→</span>
-						</a>
+						<Button href="/contact" isPrimary={true}>Let's Work Together</Button>
 					</div>
 				</div>
 			</div>
@@ -339,32 +325,7 @@
 		</div>
 	</section>
 
-	<!-- CTA Section -->
-	<section class="px-4 py-20">
-		<div
-			class="from-primary/10 to-primary/5 mx-auto max-w-3xl rounded-2xl bg-gradient-to-r p-8 text-center sm:p-12"
-		>
-			<h2 class="mb-6 text-3xl font-bold md:text-4xl">Ready to Start Your Project?</h2>
-			<p class="mx-auto mb-8 max-w-xl text-lg text-gray-700">
-				Let's work together to create a website that perfectly represents your brand and helps you
-				achieve your business goals.
-			</p>
-			<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-				<a
-					href="/contact"
-					class="bg-primary shadow-primary/20 hover:shadow-primary/30 inline-flex min-w-[150px] items-center justify-center rounded-lg px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
-				>
-					Contact Me
-				</a>
-				<a
-					href="/portfolio"
-					class="border-primary text-primary inline-flex min-w-[150px] items-center justify-center rounded-lg border-2 px-6 py-[10px] font-semibold transition-all duration-300 hover:scale-105"
-				>
-					View My Work
-				</a>
-			</div>
-		</div>
-	</section>
+	<MinimalCTA />
 </main>
 
 <Footer />

@@ -5,7 +5,7 @@
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 	import '@splidejs/splide/css';
 	import { browser } from '$app/environment';
-	import Button from '$lib/components/Button.svelte';
+	import Button from '$lib/components/ui/Button.svelte';
 	const { techLogo1, techLogo2, techLogo3 } = $props();
 
 	let activeTab = $state<string>('shopify');

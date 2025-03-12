@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Button from '$lib/components/Button.svelte';
+	import Button from '$lib/components/ui/Button.svelte';
 	import RotatingWord from '$lib/components/RotatingWord.svelte';
 
 	// New reactive variable and functions for interactive animation

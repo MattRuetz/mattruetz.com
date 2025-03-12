@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { onNavigate } from '$app/navigation';
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
 	import ProjectsSection from '$lib/components/page-sections/home/ProjectsSection.svelte';
-	import type { ProjectData, PaginationData } from '$lib/api/wordpress';
+	import MinimalCTA from '$lib/components/page-sections/MinimalCTA.svelte';
 
 	// Get the data from the server load function
 	let { data } = $props();
@@ -54,31 +52,7 @@
 	<ProjectsSection {projects} {pagination} {isLoading} {handlePageChange} />
 
 	<!-- CTA Section -->
-	<section class="px-4 py-20">
-		<div
-			class="from-primary/10 to-primary/5 mx-auto max-w-3xl rounded-2xl bg-gradient-to-r p-8 text-center sm:p-12"
-		>
-			<h2 class="mb-6 text-3xl font-bold md:text-4xl">Ready to Start Your Project?</h2>
-			<p class="mx-auto mb-8 max-w-xl text-lg text-gray-700">
-				Let's discuss your project requirements and create a website that perfectly represents your
-				brand and helps you achieve your business goals.
-			</p>
-			<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-				<a
-					href="/contact"
-					class="bg-primary shadow-primary/20 hover:shadow-primary/30 inline-flex min-w-[150px] items-center justify-center rounded-lg px-6 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
-				>
-					Contact Me
-				</a>
-				<a
-					href="/hire-me"
-					class="border-primary text-primary inline-flex min-w-[150px] items-center justify-center rounded-lg border-2 px-6 py-[10px] font-semibold transition-all duration-300 hover:scale-105"
-				>
-					Start a Project
-				</a>
-			</div>
-		</div>
-	</section>
+	<MinimalCTA />
 </main>
 
 <style>

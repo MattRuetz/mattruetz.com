@@ -1,6 +1,6 @@
 <script>
 	import { fade } from 'svelte/transition';
-	import Button from '$lib/components/Button.svelte';
+	import Button from '$lib/components/ui/Button.svelte';
 </script>
 
 <section class="py-20">

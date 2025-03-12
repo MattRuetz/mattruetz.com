@@ -2,6 +2,7 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import Button from '$lib/components/ui/Button.svelte';
 
 	let scrolled = $state(false);
 	let mobileMenuOpen = $state(false);
@@ -50,12 +51,12 @@
 	class:py-2={scrolled}
 	class:py-4={!scrolled}
 >
-	<div class="container mx-auto max-w-6xl px-4 sm:px-6">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6">
 		<div class="flex items-center justify-between">
 			<!-- Logo -->
 			<a href="/" class="flex items-center">
 				<img
-					src="/images/branding/Logo Final.png"
+					src="/images/branding/Logo Final - Black.png"
 					alt="Matt Ruetz Web Solutions"
 					class="h-auto w-[120px] transition-all duration-300 md:w-[150px]"
 					class:w-[100px]={scrolled}
@@ -81,12 +82,17 @@
 			</nav>
 
 			<!-- Hire Me Button (desktop) -->
-			<a
+			<!-- <a
 				href="/hire-me"
 				class="bg-primary shadow-primary/20 hover:shadow-primary/30 hidden rounded-lg px-5 py-2 text-base font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-md md:block"
 			>
 				Hire Me
-			</a>
+			</a> -->
+			<Button
+				href="/hire-me"
+				isPrimary={true}
+				class="hidden !px-4 !py-1 !text-base !shadow-none md:block">Hire Me</Button
+			>
 
 			<!-- Mobile Menu Button -->
 			<button
